@@ -1,0 +1,45 @@
+<?page title="Translated Languages Administration Center" contentType="text/html;charset=UTF-8"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk>
+	<tabbox id="uiTabboxLanguagesAdmin" width="100%">
+		<tabs>
+			<tab label="English" />
+			<tab label="Indonesia" />
+		</tabs>
+		<tabpanels>
+			<tabpanel>
+				<window id="uiWndEnglishSentences" title="List of English Sentences"
+					border="normal" apply="org.zkoss.bind.BindComposer"
+					viewModel="@id('vmEng') @init('id.ac.gunadarma.paracorp.viewmodel.EnglishSentenceVM')">
+					<listbox id="uiListboxEnglishSentences" width="100%"
+						model="@load(vmEng.listSentences)"
+						selectedItem="@bind(vmEng.selectedItem)">
+						<listhead>
+							<listheader align="center" width="20%" label="ID" />
+							<listheader align="center" width="80%"
+								label="English Sentence" />
+						</listhead>
+						<template name="model" var="item">
+							<listitem>
+								<listcell label="@load(item.id)" />
+								<listcell style="text-align: left"
+									label="@load(item.sentence)" />
+							</listitem>
+						</template>
+					</listbox>
+				</window>
+			</tabpanel>
+			<tabpanel>
+				<toolbar hflex="true">
+                    <toolbarbutton id="uiBtnUploadIndonesia" label="Upload"/>
+                </toolbar>
+                <window id="uiWndIndonesia" title="List of Indonesia Sentences"
+                	border="normal" apply="org.zkoss.bind.BindComposer"
+					viewModel="@id('vmIndo') @init('id.ac.gunadarma.paracorp.viewmodel.EnglishSentenceVM')">
+                	
+                </window>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+	
+</zk>

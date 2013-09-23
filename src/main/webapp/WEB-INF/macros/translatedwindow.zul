@@ -1,0 +1,21 @@
+<window id="uiWndTranslatedSentences" title="List of ${arg.languageName} Sentences"
+        border="normal" apply="org.zkoss.bind.BindComposer"
+		viewModel="@id('vmTranslated') @init('id.ac.gunadarma.paracorp.viewmodel.TranslatedSentenceVM', 
+			language='${arg.language}')">
+       <listbox id="uiListboxTranslatedSentences" width="100%"
+						model="@load(vmTranslated.listSentences)"
+						selectedItem="@bind(vmTranslated.selectedItem)">
+			<listhead>
+				<listheader align="center" width="20%" label="ID" />
+				<listheader align="center" width="80%"
+					label="${arg.languageName} Sentence" />
+			</listhead>
+			<template name="model" var="item">
+				<listitem>
+					<listcell label="@load(item.id)" />
+					<listcell style="text-align: left"
+						label="@load(item.sentence)" />
+				</listitem>
+			</template>
+		</listbox>        	
+</window>
